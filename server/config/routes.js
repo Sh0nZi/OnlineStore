@@ -19,7 +19,7 @@ module.exports = function (app) {
     app.get('/api/users/:id', auth.isAuthenticated, controllers.users.getUserById);
 
     app.get('/partials/:partialArea/:partialName', function (req, res) {
-        res.render('../../Client/app/' + req.params.partialArea + '/' + req.params.partialName);
+        res.render('../../client/app/' + req.params.partialArea + '/' + req.params.partialName);
     });
 
     // Comment api
