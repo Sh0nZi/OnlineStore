@@ -1,0 +1,77 @@
+.container(ng-controller="ProductDetailsCtrl")
+
+    .col-md-8(ng-hide="invalidUrl")
+        .row
+            .col-md-9.buffer
+                h1 {{product.name}}
+            .col-md-6
+                | added on on {{product.date | date:'medium'}}
+
+        .row.product-body
+            .col-md-5.image-container.pull-left
+                img(width="365" heigth="365" src="{{product.image}}")
+            pre.col-md-6.col-md-offset-1.well {{product.body}}
+
+        .col-md-5.pull-right
+            | Price: {{product.price}}
+
+
+
+        .row
+            .col-md-1(ng-show="identity.isAuthenticated() && !identity.isAuthorizedForRole('admin')")
+                p.btn.btn-primary(ng-click="enableOrderForm()") Order
+
+        .row(ng-show="enableOrder")
+
+
+            .col-md-12.comment-post
+                p Enter your contact details for further delivery :
+                input.form-control(placeholder="Адрес", ng-model="order.address", requred)
+            .col-md-12.comment-post
+                input.form-control(placeholder="Телефон", ng-model="order.phoneNumber", requred)
+            .col-md-3.pull-right
+                .col-md-7
+                    p.btn.btn-primary(ng-click="sendOrder(order)") Send Order
+                .col-md-4
+                    p.btn.btn-primary(ng-click="cancelOrder()") Cancel
+        .row.buffer
+
+
+        .row(ng-show="canEdit")
+            .col-md-1
+                a.btn.btn-primary(href="#/product/{{product._id}}/edit") Edit
+            .col-md-1(ng-show="isAdmin")
+                p.btn.btn-primary(ng-click="deleteProduct()") Delete
+
+
+        .row
+            .col-md-10
+                h2.buffer Comments
+            .col-md-2(ng-show="identity.isAuthenticated()")
+                p.btn.btn-primary(ng-click="enablePostComment()") Post comment
+
+        .row(ng-show="enablePost")
+            .col-md-12.comment-post
+                textarea.form-control(placeholder="Comment", ng-model="comment.text")
+            .col-md-3.pull-right
+                .col-md-6
+                    p.btn.btn-primary(ng-click="postComment(comment)") Post
+                .col-md-6
+                    p.btn.btn-primary(ng-click="cancelComment()") Cancel
+
+
+        .row.well(ng-repeat="comment in product.comments")
+            .row
+                .col-md-12
+                    img(width="20", heigth="20", src="{{comment.user.avatar}}", ng-show="comment.user.avatar")
+                    a(href="#/user-details/{{comment.user._id}}") {{comment.user.username}}
+                    | &nbspon {{comment.date | date: 'medium'}}
+            .row
+                .col-md-11.comment-offset.comment-text
+                    | {{comment.text}}
+            .row(ng-show="isAdmin")
+                .col-md-1
+                    p.btn.btn-primary(ng-click="deleteComment(comment._id)", data="{{comment._id}}") Delete
+
+    .col-md-12(ng-show="invalidUrl")
+        h2.center-text Invalid post id!

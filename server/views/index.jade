@@ -1,0 +1,17 @@
+extends includes/layout
+block main-content
+    header.navbar-inverse.navbar-fixed-top
+        .container
+            .navbar-header
+                a.navbar-brand(href="#/") Online Store
+            .navbar-collapse.collapse
+                ul.nav.navbar-nav
+                    li
+                        a(href="#/products") Products
+                div(ng-include="'partials/views/login'")
+    section
+        div(ng-view)
+    footer
+        p.text-center
+            |  &copy; All Rights Reserved
+

@@ -1,0 +1,21 @@
+.container
+    .jumbotron
+        .row
+            h1.text-center Welcome to Jewelry Store
+            h2.text-center Best products
+
+
+
+        h2 Latest Products
+
+        table.table.table-striped
+            thead
+                tr
+                    td Product Name
+                    td Product Date
+
+            tbody
+                tr(ng-repeat="product in products")
+                    td
+                        a(href="#/product/{{product._id}}") {{ product.name }}
+                    td {{ product.date }}

@@ -1,0 +1,53 @@
+.container
+    .jumbotron
+        h2 Products
+
+        .pull-right
+            a.btn.btn-primary(href="#/create-product" ng-show="identity.isAuthorizedForRole('admin')") Create Product
+
+        .form-group.col-lg-6
+            label.col-md-4.control-label(for="first-name") Sort By
+                select(ng-model="request.sort")
+                    option price
+                    option date
+
+            label.col-md-5.control-label(for="first-name") Order Type
+                select(ng-model="request.orderBy")
+                    option asc
+                    option desc
+            button.btn.btn-info.btn-xs.pull-left(ng-click="filter(request)") Sort
+
+        .row
+            .col-md-offset-8.col-md-1
+                button.btn.btn-info.btn-xs(ng-click="previousPage()" ng-disabled="request.page == 0") &lt;&lt;
+            .col-md-2
+                input.form-comtrol(type="text" ng-model="request.page" value="0")
+            .col-md-1
+                button.btn.btn-info.btn-xs.pull-right(ng-click="nextPage()" ng-disabled="isLastPage") &gt;&gt;
+
+
+        .form-group.col-md-12.pull-left
+            input(type="text" ng-model="request.name" ng-change="onSearchChange(request)" placeholder="Search by name")
+
+        .col-md-12.pull-left(ng-repeat="product in products")
+
+            .col-md-8.buffer
+
+        table
+           td.col-lg-5(ng-repeat="product in products")
+               table
+                   tr
+                        h3
+                            a(href="#/product/{{product._id}}") {{product.name}}
+                        | added on on {{product.date | date:'medium'}}
+                        td
+                            img(width="200" heigth="200" src="{{product.image}}")
+                        td
+                            pre(style="border:none; background-color:#eee;") {{product.body}}
+
+                | Price: {{product.price}}
+
+
+
+
+

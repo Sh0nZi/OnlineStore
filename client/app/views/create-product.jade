@@ -1,0 +1,25 @@
+.container(ng-controller="CreateProductCtrl")
+    .well
+        form.form-horizontal(name="productCreateForm")
+            fieldset
+                legend Create New Product
+                .form-group
+                    label.col-md-2.control-label(for="name") Product Name
+                    .col-md-10
+                        input.form-control(type="text", placeholder="Title", ng-model="product.name", required)
+                .form-group
+                    label.col-md-2.control-label(for="info") Product Information
+                    .col-md-10
+                        textarea.form-control(placeholder="Content", ng-model="product.body", required)
+                .form-group
+                    label.col-md-2.control-label(for="price") Product Price
+                        input.form-control(type="text", placeholder="Price", ng-model="product.price", required)
+                //TO DO: add quantity for product here and in the server-side logic...
+                .form-group
+                    .col-md-6
+                        input(type="text" class="form-control validity" id="image" placeholder="Image URL" required  ng-model="product.image")
+                    .col-md-6.image-container
+                        img(width="250" heigth="250" ng-src="{{product.image}}" src="")
+                .pull-right
+                    button.btn.btn-primary(ng-click="create(product)", ng-disabled="productCreateForm.$invalid") Post
+                    a.btn.btn-primary(href="#/") Cancel

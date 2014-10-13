@@ -1,0 +1,25 @@
+{
+  "name": "Store",
+  "version": "0.0.1",
+  "authors": [
+    "Stoyan Stoyanov <sss17@mail.com>"
+  ],
+  "description": "Online Store client",
+  "main": "server.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "toastr": "~2.0.3",
+    "angular": "~1.2.26",
+    "angular-resource": "~1.2.26",
+    "angular-route": "~1.2.26",
+    "bootstrap": "~3.2.0"
+  }
+}

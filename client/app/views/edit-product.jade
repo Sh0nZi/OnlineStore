@@ -1,0 +1,30 @@
+.container(ng-controller="EditJokeCtrl")
+
+    .col-md-8(ng-hide="invalidUrl")
+        .well
+            form.form-horizontal(name="productEditForm")
+                fieldset
+                    legend Edit As Joke
+                    .form-group
+                        label.col-md-2.control-label(for="name") Product Name
+                        .col-md-10
+                            input.form-control(id='name', type="text", ng-model='product.name', placeholder="Name",
+                            required)
+                    .form-group
+                        label.col-md-2.control-label(for="body") Product Information
+                        .col-md-10
+                            textarea.form-control(id='body', placeholder="Content", ng-model='product.body', required)
+                    .form-group
+                        label.col-md-2.control-label(for="tags") Product Price
+                            input.form-control(type="text", placeholder="Price", ng-model="product.price", required)
+                    .form-group
+                        .col-md-6
+                            input(type="text" class="form-control validity" id="image" placeholder="Image URL" required  ng-model="product.image")
+                        .col-md-6.image-container
+                            img(width="250" heigth="250" ng-src="{{product.image}}" src="")
+                    .pull-right
+                        button.btn.btn-primary(ng-click="edit(product)", ng-disabled="productEditForm.$invalid") Save
+                        a.btn.btn-primary(href="#/joke/{{routeId}}") Cancel
+
+    .col-md-12(ng-show="invalidUrl")
+        h2.center-text Invalid post id!

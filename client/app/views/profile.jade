@@ -1,0 +1,30 @@
+.container
+    .well
+
+        form.form-horizontal(name="avatarForm")
+            fieldset
+                legend Upload Avatar
+                    .form-group
+                        .col-md-6
+                            input(type="text" class="form-control validity" id="image" placeholder="Avatar URL", required  ng-model="user.avatar")
+                            button.btn.btn-primary(ng-click="upload(user)", ng-disabled="avatarForm.$invalid") Save
+                        .col-md-6.image-container
+                            img(width="250" heigth="250" ng-src="{{user.avatar}}" src="")
+        fieldset(ng-show="!identity.isAuthorizedForRole('admin')")
+            legend Your Last 10 Orders
+            table.table.table-striped
+                thead
+                    tr
+                        td Product ordered
+                        td Order Amount
+                        td Order date
+                        td Delivery Address
+                tbody
+                    tr(ng-repeat="order in yourOrders" ng-show="order.user._id === identity.currentUser._id")
+                        td {{ order.product.name }}
+                        td {{ order.amount }}
+                        td {{ order.date | date : 'dd.MM.yyyy H:mm:ss'}}
+                        td {{ order.address }}
+
+
+
