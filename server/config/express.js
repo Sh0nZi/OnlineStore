@@ -9,7 +9,7 @@ var express = require('express'),
 
 module.exports = function(app, config) {
     app.set('view engine', 'jade');
-    app.set('views', config.rootPath + '/Server/views');
+    app.set('views', config.rootPath + '/server/views');
     app.use(cookieParser());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
