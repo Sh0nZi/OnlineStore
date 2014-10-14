@@ -16,7 +16,7 @@ module.exports = function(app, config) {
     app.use(session({secret: 'unicorns of magic', saveUninitialized: true, resave: true}));
     app.use(stylus.middleware(
         {
-            src: config.rootPath + '/Client',
+            src: config.rootPath + '/client',
             compile: function (str, path) {
                 return stylus(str).set('filename', path);
             }
@@ -24,5 +24,5 @@ module.exports = function(app, config) {
     ));
     app.use(passport.initialize());
     app.use(passport.session());
-    app.use(express.static(config.rootPath + '/Client'));
+    app.use(express.static(config.rootPath + '/client'));
 };
