@@ -31,7 +31,6 @@ app.controller('OrdersCtrl', ["$scope","$route", "identity", "OrdersResource","n
 
     };
     $scope.filter = function(request) {
-        console.log(request);
         OrdersResource.query(request)
             .$promise
             .then(function(orders) {

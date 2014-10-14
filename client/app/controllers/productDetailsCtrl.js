@@ -18,7 +18,8 @@ app.controller('ProductDetailsCtrl', ["$scope", "$location", "$routeParams", "$r
             notifier.success('You have deleted a product!');
             $location.path("/products");
         }, function(error){
-            console.log(error);
+
+            notifier.error('You failed to delete the product!');
         })
     };
 

@@ -23,5 +23,4 @@ app.controller('ProfileCtrl', function($scope, $location, auth, identity, notifi
 
     };
     $scope.yourOrders = OrdersResource.query();
-    console.log($scope.yourOrders);
 });

@@ -35,7 +35,7 @@ app.config(function($routeProvider, $locationProvider) {
             controller:'ProductsCtrl'
         })
         .when('/signup', {
-            templateUrl: '/partials/views/signup',
+            templateUrl: '/partials/views/signUp',
             controller: 'SignUpCtrl'
         })
         .when('/profile', {

@@ -30,7 +30,6 @@ app.controller('ProductsCtrl', ["$scope", "identity", "ProductsResource", functi
 
     };
     $scope.filter = function(request) {
-        console.log(request);
         ProductsResource.query(request)
             .$promise
             .then(function(products) {
