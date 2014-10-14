@@ -13,7 +13,7 @@ module.exports = function(app, config) {
     app.use(cookieParser());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
-    app.use(session({secret: 'magic unicorns'}));
+    app.use(session({secret: 'unicorns of magic', saveUninitialized: true, resave: true}));
     app.use(stylus.middleware(
         {
             src: config.rootPath + '/Client',
