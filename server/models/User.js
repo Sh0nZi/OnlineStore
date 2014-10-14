@@ -3,8 +3,6 @@ var mongoose = require('mongoose'),
 
 var userSchema = mongoose.Schema({
     username: { type: String, require: '{PATH} is required', unique: true },
-    firstName: { type: String, require: '{PATH} is required' },
-    lastName: { type: String, require: '{PATH} is required' },
     salt: String,
     hashPass: String,
     avatar: String,
@@ -38,11 +36,9 @@ module.exports = {
                     hashedPwd;
 
                 salt = encryption.generateSalt();
-                hashedPwd = encryption.generateHashedPassword(salt, '123456');
+                hashedPwd = encryption.generateHashedPassword(salt, 'jewelryadmin');
                 User.create({
-                    username: 'admin',
-                    firstName: 'App',
-                    lastName: 'Owner',
+                    username: 'administrator',
                     salt: salt,
                     hashPass: hashedPwd,
                     avatar: 'http://img2.wikia.nocookie.net/__cb20120204201430/plazmabursttwo/images/0/0e/Admin_logo_by_lucifercho-d39lpuk.png',

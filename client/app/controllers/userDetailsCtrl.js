@@ -1,4 +1,4 @@
-app.controller('UserDetailsCtrl', function($scope,$routeParams,auth, notifier,identity, UsersResource,ProductsResource) {
+app.controller('UserDetailsCtrl', function($scope,$routeParams,auth, notifier,identity, UsersResource,OrdersResource) {
     $scope.identity = identity;
 
     var currentUser= UsersResource.get({id:$routeParams.id.toString()}, function () {
@@ -13,6 +13,6 @@ app.controller('UserDetailsCtrl', function($scope,$routeParams,auth, notifier,id
             notifier.error('You failed to update the user info');
         });
     };
-    $scope.orders= ProductsResource.query();
+    $scope.orders= OrdersResource.query();
 });
 

@@ -3,7 +3,7 @@
 
         form.form-horizontal(name="avatarForm")
             fieldset
-                legend Upload Avatar
+                legend Change Avatar
                     .form-group
                         .col-md-6
                             input(type="text" class="form-control validity" id="image" placeholder="Avatar URL", required  ng-model="user.avatar")
@@ -11,7 +11,15 @@
                         .col-md-6.image-container
                             img(width="250" heigth="250" ng-src="{{user.avatar}}" src="")
         fieldset(ng-show="!identity.isAuthorizedForRole('admin')")
-            legend Your Last 10 Orders
+            .row
+                .col-md-offset-8.col-md-1
+                    button.btn.btn-info.btn-xs(ng-click="previousPage()" ng-disabled="request.page == 0") &lt;&lt;
+                .col-md-2
+                    input.form-comtrol(type="text" ng-model="request.page" value="0")
+                .col-md-1
+                    button.btn.btn-info.btn-xs.pull-right(ng-click="nextPage()" ng-disabled="isLastPage") &gt;&gt;
+
+            legend Your Orders
             table.table.table-striped
                 thead
                     tr

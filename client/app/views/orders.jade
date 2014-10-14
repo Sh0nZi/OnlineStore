@@ -34,6 +34,7 @@
                         td Product ordered
                         td Order Amount
                         td Order date
+                        td Ordered by
                         td Delivery Address
                         td Delivery Phone Number
                 tbody
@@ -42,6 +43,8 @@
                             a(href="#/product/{{order.product._id}}") {{ order.product.name }}
                         td {{ order.amount }}
                         td {{ order.date | date : 'dd.MM.yyyy H:mm:ss'}}
+                        td
+                            a(href="#/user-details/{{order.user._id}}")  {{ order.user.username }}
                         td {{ order.address }}
                         td {{ order.phoneNumber }}
                         td

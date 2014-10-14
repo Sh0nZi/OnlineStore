@@ -107,15 +107,15 @@ function updateProduct(req, res) {
                 return;
             }
 
-            if (joke.user.toString() !== req.user._id.toString()) {
-                res.status(403).send('Only author can edit a product');
+            if (req.user.roles.indexOf('admin') < 0) {
+                res.status(403).send('Only administrator can edit a product');
                 return;
             }
 
-            console.log(req.body);
-            product.title = req.body.title || product.title;
+            product.name = req.body.name || product.name;
             product.body = req.body.body || product.body;
-            product.tags = req.body.tags || product.tags;
+            product.image=req.body.image || product.image;
+            product.price=req.body.price || product.price;
             product.save(function (err, result) {
                 if (err) {
                     res.status(400).send(err.message);

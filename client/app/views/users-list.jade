@@ -11,5 +11,5 @@
         tbody
             tr(ng-repeat="user in users" ng-show="user.roles.indexOf('admin')" )
                 td
-                    a(href="#/user-details/{{user._id}}") {{ user.firstName +' '+ user.lastName}}
+                    a(href="#/user-details/{{user._id}}") {{ user.username}}
                 td {{ user.lastLog | date: 'dd.MM.yyyy hh:mm:ss' }}

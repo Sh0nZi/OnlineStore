@@ -1,51 +1,40 @@
-.container
-    .jumbotron
-        h2 Products
+.container.jumbotron(style='border-radius: 10px; padding:50px')
+        h2.text-center(style='color:purple; margin-bottom:100px') Products&nbsp&nbsp
+            a.btn.btn-primary.btn-sm(href="#/create-product" ng-show="identity.isAuthorizedForRole('admin')") Create New Product
 
-        .pull-right
-            a.btn.btn-primary(href="#/create-product" ng-show="identity.isAuthorizedForRole('admin')") Create Product
 
-        .form-group.col-lg-6
-            label.col-md-4.control-label(for="first-name") Sort By
+        .form-group.col-lg-5.pull-right
+            label.col-md-5.control-label(for="first-name") Sort by:&nbsp
                 select(ng-model="request.sort")
                     option price
                     option date
 
-            label.col-md-5.control-label(for="first-name") Order Type
+            label.col-md-5.control-label(for="first-name") Asc/desc:&nbsp
                 select(ng-model="request.orderBy")
                     option asc
                     option desc
             button.btn.btn-info.btn-xs.pull-left(ng-click="filter(request)") Sort
 
-        .row
-            .col-md-offset-8.col-md-1
-                button.btn.btn-info.btn-xs(ng-click="previousPage()" ng-disabled="request.page == 0") &lt;&lt;
-            .col-md-2
-                input.form-comtrol(type="text" ng-model="request.page" value="0")
-            .col-md-1
-                button.btn.btn-info.btn-xs.pull-right(ng-click="nextPage()" ng-disabled="isLastPage") &gt;&gt;
+
+        .form-group.col-md-7
+            label.col-md-7.control-label(for="search") Search by name:&nbsp
+                input(type="text" ng-model="request.name" ng-change="onSearchChange(request)" placeholder="Enter name...")
+
+           .col-lg-6(style='margin-bottom:15px' ng-repeat="product in products")
+                h3
+                    b(style='color:purple') {{product.name}}&nbsp
+                    a.btn.btn-info.btn-xs(href="#/product/{{product._id}}") View
+                    p(style='font-size:14px') added on on {{product.date | date:'medium'}}
+                img(width="200" heigth="200" src="{{product.image}}")
+                b Price: {{product.price}}
 
 
-        .form-group.col-md-12.pull-left
-            input(type="text" ng-model="request.name" ng-change="onSearchChange(request)" placeholder="Search by name")
+        .col-md-offset-8.col-md-1
+            button.btn.btn-info.btn-xs(ng-click="previousPage()" ng-disabled="request.page == 0") &lt;&lt;
+        .col-md-2
+            input.form-comtrol.col-md-4(type="text" ng-model="request.page" value="0")
+            button.btn.btn-info.btn-xs.pull-right(ng-click="nextPage()" ng-disabled="isLastPage") &gt;&gt;
 
-        .col-md-12.pull-left(ng-repeat="product in products")
-
-            .col-md-8.buffer
-
-        table
-           td.col-lg-5(ng-repeat="product in products")
-               table
-                   tr
-                        h3
-                            a(href="#/product/{{product._id}}") {{product.name}}
-                        | added on on {{product.date | date:'medium'}}
-                        td
-                            img(width="200" heigth="200" src="{{product.image}}")
-                        td
-                            pre(style="border:none; background-color:#eee;") {{product.body}}
-
-                | Price: {{product.price}}
 
 
 

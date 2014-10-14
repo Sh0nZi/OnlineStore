@@ -23,7 +23,7 @@ app.config(function($routeProvider, $locationProvider) {
         })
         .when('/product/:id/edit',{
             templateUrl:'/partials/views/edit-product',
-            controller:'EditJokeCtrl',
+            controller:'EditProductCtrl',
             resolve: routeUserChecks.authenticated
         })
         .when('/product/:id',{

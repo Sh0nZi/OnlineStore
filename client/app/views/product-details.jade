@@ -3,7 +3,7 @@
     .col-md-8(ng-hide="invalidUrl")
         .row
             .col-md-9.buffer
-                h1 {{product.name}}
+                h1(style='color:purple') {{product.name}}
             .col-md-6
                 | added on on {{product.date | date:'medium'}}
 
@@ -13,7 +13,7 @@
             pre.col-md-6.col-md-offset-1.well {{product.body}}
 
         .col-md-5.pull-right
-            | Price: {{product.price}}
+            b Price: {{product.price}}
 
 
 

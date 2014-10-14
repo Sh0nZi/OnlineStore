@@ -1,12 +1,12 @@
 .container
     .jumbotron
-        .row
-            h1.text-center Welcome to Jewelry Store
-            h2.text-center Best products
+        .row(ng-show='identity.isAuthenticated()')
+            h2(style='margin-bottom: 70px') Welcome,&nbsp
+              a(href='#/profile') {{identity.currentUser.username}}!
 
 
 
-        h2 Latest Products
+        h2(style='color:purple') Latest Products
 
         table.table.table-striped
             thead
@@ -18,4 +18,4 @@
                 tr(ng-repeat="product in products")
                     td
                         a(href="#/product/{{product._id}}") {{ product.name }}
-                    td {{ product.date }}
+                    td {{ product.date | date : 'dd.MM.yyyy H:mm:ss' }}

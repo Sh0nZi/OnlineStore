@@ -11,8 +11,9 @@ app.controller('EditProductCtrl', ["$scope", "$location", "$routeParams", "ident
         $scope.invalidUrl = true;
     });
 
-    $scope.edit = function editPost(joke){
-        ProductsResource.update({id:$routeParams.id.toString()}, joke, function(res){
+    $scope.edit = function (product){
+        ProductsResource.update({id:$routeParams.id.toString()}, product, function(res){
+            notifier.success('Product successfully edited!');
             $location.path("product/" + $scope.routeId);
         }, function(res){
             notifier.error('Edit product failed!')
