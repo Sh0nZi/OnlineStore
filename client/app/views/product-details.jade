@@ -64,7 +64,7 @@
             .row
                 .col-md-12
                     img(width="20", heigth="20", src="{{comment.user.avatar}}", ng-show="comment.user.avatar")
-                    a(href="#/user-details/{{comment.user._id}}") {{comment.user.username}}
+                    b {{comment.user.username}}
                     | &nbspon {{comment.date | date: 'medium'}}
             .row
                 .col-md-11.comment-offset.comment-text

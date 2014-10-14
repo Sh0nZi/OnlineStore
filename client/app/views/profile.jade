@@ -21,7 +21,8 @@
                         td Delivery Address
                 tbody
                     tr(ng-repeat="order in yourOrders" ng-show="order.user._id === identity.currentUser._id")
-                        td {{ order.product.name }}
+                        td
+                           a(href="#/product/{{order.product._id}}") {{ order.product.name }}
                         td {{ order.amount }}
                         td {{ order.date | date : 'dd.MM.yyyy H:mm:ss'}}
                         td {{ order.address }}
